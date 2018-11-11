@@ -1,0 +1,177 @@
+EESchema Schematic File Version 4
+EELAYER 26 0
+EELAYER END
+$Descr A4 11693 8268
+encoding utf-8
+Sheet 1 1
+Title ""
+Date ""
+Rev ""
+Comp ""
+Comment1 ""
+Comment2 ""
+Comment3 ""
+Comment4 ""
+$EndDescr
+$Comp
+L Device:Battery_Cell BT1
+U 1 1 5BE78370
+P 2400 3900
+F 0 "BT1" V 2145 3950 50  0000 C CNN
+F 1 "Battery_Cell" V 2236 3950 50  0000 C CNN
+F 2 "" V 2400 3960 50  0001 C CNN
+F 3 "~" V 2400 3960 50  0001 C CNN
+	1    2400 3900
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:Battery_Cell BT2
+U 1 1 5BE784EE
+P 2400 4200
+F 0 "BT2" V 2145 4250 50  0000 C CNN
+F 1 "Battery_Cell" V 2236 4250 50  0000 C CNN
+F 2 "" V 2400 4260 50  0001 C CNN
+F 3 "~" V 2400 4260 50  0001 C CNN
+	1    2400 4200
+	1    0    0    -1  
+$EndComp
+$Comp
+L Display_Character:LCD-016N002L U1
+U 1 1 5BE78532
+P 6050 4000
+F 0 "U1" H 6050 3022 50  0000 C CNN
+F 1 "LCD-016N002L" H 6050 3113 50  0000 C CNN
+F 2 "Display:LCD-016N002L" H 6070 3080 50  0001 C CNN
+F 3 "http://www.vishay.com/docs/37299/37299.pdf" H 6550 3700 50  0001 C CNN
+	1    6050 4000
+	1    0    0    1   
+$EndComp
+$Comp
+L Device:R_POT RV2
+U 1 1 5BE786C3
+P 6700 4600
+F 0 "RV2" H 6630 4646 50  0000 R CNN
+F 1 "R_POT" H 6630 4555 50  0000 R CNN
+F 2 "" H 6700 4600 50  0001 C CNN
+F 3 "~" H 6700 4600 50  0001 C CNN
+	1    6700 4600
+	-1   0    0    -1  
+$EndComp
+$Comp
+L Device:R_POT RV1
+U 1 1 5BE7876F
+P 3100 4400
+F 0 "RV1" H 3030 4446 50  0000 R CNN
+F 1 "R_POT" H 3030 4355 50  0000 R CNN
+F 2 "" H 3100 4400 50  0001 C CNN
+F 3 "~" H 3100 4400 50  0001 C CNN
+	1    3100 4400
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R1
+U 1 1 5BE787C4
+P 7150 4300
+F 0 "R1" H 7220 4346 50  0000 L CNN
+F 1 "R" H 7220 4255 50  0000 L CNN
+F 2 "" V 7080 4300 50  0001 C CNN
+F 3 "~" H 7150 4300 50  0001 C CNN
+	1    7150 4300
+	0    -1   -1   0   
+$EndComp
+Wire Wire Line
+	2400 4800 2400 4300
+$Comp
+L Switch:SW_DIP_x01 SW1
+U 1 1 5BE78C10
+P 2400 3400
+F 0 "SW1" V 2354 3530 50  0000 L CNN
+F 1 "SW_DIP_x01" V 2445 3530 50  0000 L CNN
+F 2 "" H 2400 3400 50  0001 C CNN
+F 3 "" H 2400 3400 50  0001 C CNN
+	1    2400 3400
+	0    1    1    0   
+$EndComp
+$Comp
+L MCU_Module:Arduino_Nano_v3.x A1
+U 1 1 5BE78208
+P 4100 3800
+F 0 "A1" H 4100 2714 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 4100 2623 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 4250 2850 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 4100 2800 50  0001 C CNN
+	1    4100 3800
+	-1   0    0    -1  
+$EndComp
+Wire Wire Line
+	4000 4800 3100 4800
+Wire Wire Line
+	4600 3400 5650 3400
+Wire Wire Line
+	4600 3500 5650 3500
+Wire Wire Line
+	4600 3600 5650 3600
+Wire Wire Line
+	4600 3700 5650 3700
+Wire Wire Line
+	4600 4300 5100 4300
+Wire Wire Line
+	5100 4300 5100 4600
+Wire Wire Line
+	5100 4600 5650 4600
+Wire Wire Line
+	4600 4400 5650 4400
+Wire Wire Line
+	6450 4600 6550 4600
+Wire Wire Line
+	4100 4800 4100 4850
+Wire Wire Line
+	4100 4850 6700 4850
+Wire Wire Line
+	6700 4850 6700 4750
+Wire Wire Line
+	6700 4450 6700 2750
+Wire Wire Line
+	6700 2750 3900 2750
+Wire Wire Line
+	3900 2750 3900 2800
+Wire Wire Line
+	7450 4800 7450 4300
+Wire Wire Line
+	6050 3200 6850 3200
+Wire Wire Line
+	6850 3200 6850 4850
+Wire Wire Line
+	6850 4850 6700 4850
+Connection ~ 6700 4850
+Wire Wire Line
+	6700 2750 7450 2750
+Connection ~ 6700 2750
+Wire Wire Line
+	6050 4800 7450 4800
+Wire Wire Line
+	6450 4300 7000 4300
+Wire Wire Line
+	7300 4300 7450 4300
+Connection ~ 7450 4300
+Wire Wire Line
+	7450 4300 7450 2750
+Wire Wire Line
+	3250 4400 3600 4400
+Wire Wire Line
+	3100 4550 3100 4800
+Connection ~ 3100 4800
+Wire Wire Line
+	3100 4800 2400 4800
+Wire Wire Line
+	2400 3100 2400 2700
+Wire Wire Line
+	2400 2700 4200 2700
+Wire Wire Line
+	4200 2700 4200 2800
+Wire Wire Line
+	3100 4250 3100 2750
+Wire Wire Line
+	3100 2750 3900 2750
+Connection ~ 3900 2750
+$EndSCHEMATC
