@@ -9,6 +9,17 @@ void setup() {
   pinMode(potentiometer, INPUT);
 
   lcd.begin(16, 2);
+
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print(" MTE201 Caliper");
+  lcd.setCursor(0, 1);
+  
+  for (int i=0; i<16; i++)
+  {
+    lcd.print("#");
+    delay(65);
+  }
   
   Serial.begin(9600);
 }
@@ -19,8 +30,15 @@ void loop() {
   lcd.clear();
   lcd.setCursor(0, 0);
   lcd.print(potValue);
+  lcd.setCursor(0, 1);
+  //lcd.print(calibration_curve(potValue));
 
   Serial.println(potValue);
 
-  delay(50);
+  delay(30);
+}
+
+double calibration_curve(int potValue)
+{
+  return 54.3*sqrt(2.0)*sqrt(1.0-cos(0.00402*(potValue-285.0)));
 }
