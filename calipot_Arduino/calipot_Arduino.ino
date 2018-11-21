@@ -63,6 +63,18 @@ void prank()
   delay(3000);
 }
 
+byte digits = 1;
+
+byte uncertaintySymbol[8] = {
+  B00100,
+  B00100,
+  B11111,
+  B00100,
+  B00100,
+  B00000,
+  B11111,
+};
+
 void setup() {
   pinMode(potentiometer, INPUT);
 
@@ -84,8 +96,10 @@ void setup() {
     delay(65);
   }
   lcd.clear();
+
+  lcd.createChar(0, uncertaintySymbol); 
   
-  prank();
+  //prank();
 }
 
 void loop() {
@@ -93,16 +107,35 @@ void loop() {
 
   lcd.clear();
   lcd.setCursor(0, 0);
-  lcd.print(potValue);
-  lcd.setCursor(0, 1);
-  //lcd.print(calibration_curve(potValue));
 
-  Serial.println(potValue);
+  double val = calibration_curve(potValue);
+  if (val == -1)
+  {
+    lcd.print("ERROR:");
+    lcd.setCursor(0, 1);
+    lcd.print("Exceeds Bounds");
+  }
+  else
+  {
+    lcd.print(val, digits);
+    lcd.print(" mm ");  
+    lcd.write(byte(0));
+    lcd.print(" 0.8 mm");
+  }
 
+  Serial.println(val);
+  
   delay(30);
 }
 
-double calibration_curve(int potValue)
+double calibration_curve(int potValue)//Rounded to nearest integer
 {
-  return 54.3*sqrt(2.0)*sqrt(1.0-cos(0.00402*(potValue-285.0)));
+  double val = 54*sqrt(2.0)*sqrt(1.0-cos(0.2335*(potValue-289.1)*3.1416/180.0));
+
+  if (potValue <= 289)
+    return 0.0;
+  else if (val <= 101)
+    return val;
+  else//Error case, exceeds 180 degrees
+    return -1;
 }
